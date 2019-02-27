@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'bootstrap4',
     'cart.apps.CartConfig',
     'django.contrib.admin',
@@ -37,8 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'facebook_comments',
     'orders.apps.OrdersConfig',
     'shop.apps.ShopConfig',
+    'tinymce',
+
 ]
 
 MIDDLEWARE = [
@@ -122,3 +128,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'products/')
 
 CART_SESSION_ID = 'cart'
+SITE_ID = 1

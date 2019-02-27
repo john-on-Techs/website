@@ -1,41 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
 </head>
 <body>
-{% include 'shop/navbar.html' %}
-
+<div id="fb-root"></div>
+<script async defer src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2"></script>
 <div class="container">
-    <div class="row" style="margin-top: 6%">
-        <button class="btn btn-info pull-right">
-            {% with totail_items=cart|length %}
-            {% if cart|length > 0 %}
-            My Shopping Order:
-            <a href="{% url 'cart:cart_detail' %}" style="color: #ffffff">
-                {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
-            </a>
-            {% else %}
-            Your cart is empty.
-            {% endif %}
-            {% endwith %}
-        </button>
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        <div class="col-md-4">
+            <h3 class="page-header">Muvalab Blog</h3>
+            <p><a href="{% url 'blog:post_feed' %}" target="_blank">Subscribe to RSS Feed</a></p>
+        </div>
     </div>
 </div>
-{% block content %}
-
-
-{% endblock %}
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -47,6 +35,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
 </body>
 </html>
-
